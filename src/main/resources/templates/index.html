@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>TD FORMATION</title>
+</head>
+<body>
+<ul>
+  <li><a href="/users/all">Voir les utilisateurs</a></li>
+  <li>Créer un utilisateur
+    <form action="/users/create" method="post">
+      Username : <input type="text" name="username"><br>
+      Password : <input type="text" name="password"><br>
+      <input type="submit">
+    </form>
+  </li>
+  <li>Supprimer un utilisateur
+    <form action="/users/delete" method="post">
+      idUser : <input type="number" name="id"><br>
+      <input type="submit">
+    </form>
+  </li>
+</ul>
+<ul>
+  <li><a href="/articles/all">Voir les articles</a></li>
+  <li>Créer un article
+    <form action="/articles/create" method="post">
+      Titre : <input type="text" name="titre"><br>
+      URL : <input type="text" name="url"><br>
+      <input type="submit">
+    </form>
+  </li>
+  <li>Associer un article à du contenu
+    <form action="/articles/associate" method="post">
+      idContenu : <input type="number" name="idC">
+      idArticle : <input type="number" name="idA"><br>
+      <input type="submit">
+    </form>
+  </li>
+  <li>Supprimer un article
+    <form action="/articles/delete" method="post">
+      idArticle : <input type="number" name="id"><br>
+      <input type="submit">
+    </form>
+  </li>
+</ul>
+<ul>
+  <li><a href="/contenus/all">Voir les contenus</a></li>
+  <li>Créer un contenu
+    <form action="/contenus/create" method="post">
+      Titre : <input type="text" name="titre"><br>
+      DateHeue : <input type="text" name="dateHeure"><br>
+      Texte : <input type="text" name="texte"><br>
+      Auteur : <input type="text" name="auteur"><br>
+      URL : <input type="text" name="url"><br>
+      <input type="submit">
+    </form>
+  </li>
+  <li>Supprimer un contenu
+    <form action="/contenus/delete" method="post">
+      idContenus : <input type="number" name="id"><br>
+      <input type="submit">
+    </form>
+  </li>
+</ul>
+</body>
+</html>
