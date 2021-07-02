@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.formation.TD.exception.ResourceNotFoundException;
 import com.formation.TD.model.Contenu;
 import com.formation.TD.repository.ContenuRepository;
 
@@ -28,7 +29,9 @@ public class ContenuController {
 
   @GetMapping("/{id}")
   public String getContenu(Model model, @PathVariable(value = "id") Long id) {
-    model.addAttribute("contenu", contenuRepository.findById(id).toString());
+    Contenu contenu = contenuRepository.findById(id)
+      .orElseThrow(() -> new ResourceNotFoundException("contenu", "id", id));
+    model.addAttribute("contenu", contenu.toString());
     return "contenu";
   }
 

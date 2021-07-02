@@ -3,6 +3,7 @@ package com.formation.TD.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +28,14 @@ public class ArticleController {
   public String getAllArticles(Model model) {
     model.addAttribute("listArticles", articleRepository.findAll());
     return "listArticles";
+  }
+
+  @GetMapping("/{id}")
+  public String getArticle(Model model, @PathVariable(value = "id") Long id) {
+    Article article = articleRepository.findById(id)
+      .orElseThrow(() -> new ResourceNotFoundException("article", "id", id));
+    model.addAttribute("article", article.toString());
+    return "article";
   }
 
   @PostMapping("/create")
