@@ -16,7 +16,6 @@
     <th>TEXTE</th>
     <th>AUTEUR</th>
     <th>URL</th>
-    <th>ARTICLE</th>
   </tr>
   </thead>
   <tbody>
@@ -27,7 +26,6 @@
     <td th:text="${contenu.texte}"></td>
     <td th:text="${contenu.auteur}"></td>
     <td th:text="${contenu.url}"></td>
-    <td th:if="${contenu.article} != null" th:text="${contenu.article.titre}"></td>
   </tr>
   </tbody>
 </table>

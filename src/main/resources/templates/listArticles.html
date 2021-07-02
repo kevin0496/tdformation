@@ -13,6 +13,7 @@
     <th>ID</th>
     <th>TITRE</th>
     <th>URL</th>
+    <th>CONTENU</th>
   </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
     <td th:text="${article.id}"></td>
     <td th:text="${article.titre}"></td>
     <td th:text="${article.url}"></td>
+    <td th:if="${article.contenu} != null"><a th:href="@{${'/contenus/' + article.contenu.id}}">Voir contenu</a></td>
   </tr>
   </tbody>
 </table>

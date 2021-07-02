@@ -3,14 +3,12 @@ package com.formation.TD.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.formation.TD.exception.ResourceNotFoundException;
-import com.formation.TD.model.Article;
 import com.formation.TD.model.Contenu;
-import com.formation.TD.repository.ArticleRepository;
 import com.formation.TD.repository.ContenuRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,12 +19,17 @@ import lombok.RequiredArgsConstructor;
 public class ContenuController {
 
   private final ContenuRepository contenuRepository;
-  private final ArticleRepository articleRepository;
 
   @GetMapping("/all")
   public String getAllContenu(Model model) {
     model.addAttribute("listContenu", contenuRepository.findAll());
     return "listContenu";
+  }
+
+  @GetMapping("/{id}")
+  public String getContenu(Model model, @PathVariable(value = "id") Long id) {
+    model.addAttribute("contenu", contenuRepository.findById(id).toString());
+    return "contenu";
   }
 
   @PostMapping("/create")
